@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="625.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TeacherOverviewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="625.0" stylesheets="@TeacherOverview.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TeacherOverviewController">
    <left>
-      <VBox alignment="CENTER_LEFT" prefHeight="400.0" prefWidth="353.0" spacing="65.0" BorderPane.alignment="CENTER_LEFT">
+      <VBox alignment="CENTER_LEFT" prefHeight="274.0" prefWidth="620.0" spacing="50.0" BorderPane.alignment="CENTER_LEFT">
          <BorderPane.margin>
             <Insets top="20.0" />
          </BorderPane.margin>
@@ -20,10 +20,10 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <Button fx:id="sde2020Classbutton" mnemonicParsing="false" text="SDE 2020" />
-                  <VBox prefHeight="43.0" prefWidth="188.0">
+                  <Button fx:id="sde2020Classbutton" mnemonicParsing="false" prefHeight="52.0" prefWidth="130.0" text="SDE 2020" />
+                  <VBox prefHeight="60.0" prefWidth="390.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="183.0" text="Studerende med fravær over 15%:" />
+                        <Label fx:id="sde2020Student" prefHeight="20.0" prefWidth="350.0" text="Students with absence over 15%" />
                         <Label fx:id="sde2020Fravaerlist" text="Label" />
                      </children>
                   </VBox>
@@ -31,10 +31,10 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <Button fx:id="sde2021ClassButton" mnemonicParsing="false" text="SDE 2021" />
-                  <VBox prefHeight="44.0" prefWidth="182.0">
+                  <Button fx:id="sde2021ClassButton" mnemonicParsing="false" prefHeight="52.0" prefWidth="130.0" text="SDE 2021" />
+                  <VBox prefHeight="60.0" prefWidth="390.0">
                      <children>
-                        <Label text="Studerende med fravær over 15%:" />
+                        <Label fx:id="sde2021Student" prefHeight="20.0" prefWidth="350.0" text="Students with absence over 15%" />
                         <Label fx:id="sde2021Fravaerlist" text="Label" />
                      </children>
                   </VBox>
@@ -42,10 +42,10 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <Button fx:id="sco2020ClassButon" mnemonicParsing="false" prefWidth="69.0" text="SCO 2020" />
-                  <VBox prefHeight="44.0" prefWidth="185.0">
+                  <Button fx:id="sco2020ClassButon" mnemonicParsing="false" prefHeight="52.0" prefWidth="130.0" text="SCO 2020" />
+                  <VBox prefHeight="60.0" prefWidth="390.0">
                      <children>
-                        <Label text="Studerende med fravær over 15%:" />
+                        <Label fx:id="sco2020Student" prefHeight="20.0" prefWidth="350.0" text="Students with absence over 15%" />
                         <Label fx:id="sco2020Fravaerlist" text="Label" />
                      </children>
                   </VBox>

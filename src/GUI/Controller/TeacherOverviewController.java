@@ -13,6 +13,12 @@ import java.util.ResourceBundle;
 public class TeacherOverviewController implements Initializable {
 
     @FXML
+    private Label sco2020Student;
+    @FXML
+    private Label sde2021Student;
+    @FXML
+    private Label sde2020Student;
+    @FXML
     private Button sde2020Classbutton;
     @FXML
     private Label sde2020Fravaerlist;
