@@ -18,6 +18,7 @@
 
 .check-box{
     -fx-highlight-fill: #0096a8;
+    -fx-text-fill: white;
 }
 
 .label
@@ -28,4 +29,8 @@
 .borderpane {
     -fx-background-color: black;
     -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0);
+}
+
+#imageview {
+
 }
