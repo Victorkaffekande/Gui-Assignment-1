@@ -18,28 +18,28 @@
          <children>
             <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/monday picture.png" />
+                  <Image url="@../../images/mondaypicture.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/tuesday picture.png" />
+                  <Image url="@../../images/tuesdaypicture.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/wedneysday picture.png" />
+                  <Image url="@../../images/wedneysdaypicture.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/thursday picture.png" />
+                  <Image url="@../../images/thursdaypicture.png" />
 
                </image>
             </ImageView>
             <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/friday picture.png" />
+                  <Image url="@../../images/fridaypicture.png" />
                </image>
             </ImageView>
          </children>
