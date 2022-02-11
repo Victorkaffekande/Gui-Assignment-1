@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -50,5 +51,14 @@ public class TeacherOverviewController implements Initializable {
 
     public void handleBackButton(ActionEvent actionEvent) {
         System.exit(0);
+    }
+
+    public void handleSDE2020Class(ActionEvent actionEvent) {
+    }
+
+    public void handleSDE2021Class(ActionEvent actionEvent) {
+    }
+
+    public void handleSCO2020Class(MouseEvent mouseEvent) {
     }
 }
