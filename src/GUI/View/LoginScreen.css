@@ -1,0 +1,31 @@
+.button{
+    -fx-background-color: #00bcd4;
+    -fx-text-fill: white;
+}
+
+.button:hover{
+    -fx-background-color: #0096a8;
+}
+
+.button:pressed{
+    -fx-background-color: #009fe3;
+}
+
+.button:focused {
+    -fx-background-color: #009fe3;
+    -fx-border-color: #CDD1D6;
+}
+
+.check-box{
+    -fx-highlight-fill: #0096a8;
+}
+
+.label
+{
+    -fx-text-fill: white;
+}
+
+.borderpane {
+    -fx-background-color: black;
+    -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0);
+}
