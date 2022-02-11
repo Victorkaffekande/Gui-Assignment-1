@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="625.0" stylesheets="@TeacherOverview.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TeacherOverviewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="625.0" stylesheets="@TeacherOverview.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TeacherOverviewController">
    <left>
       <VBox alignment="CENTER_LEFT" prefHeight="274.0" prefWidth="620.0" spacing="50.0" BorderPane.alignment="CENTER_LEFT">
          <BorderPane.margin>
@@ -20,7 +20,7 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <Button fx:id="sde2020Classbutton" mnemonicParsing="false" prefHeight="52.0" prefWidth="130.0" text="SDE 2020" />
+                  <Button fx:id="sde2020Classbutton" mnemonicParsing="false" onAction="#handleSDE2020Class" prefHeight="52.0" prefWidth="130.0" text="SDE 2020" />
                   <VBox prefHeight="60.0" prefWidth="390.0">
                      <children>
                         <Label fx:id="sde2020Student" prefHeight="20.0" prefWidth="350.0" text="Students with absence over 15%" />
@@ -31,7 +31,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <Button fx:id="sde2021ClassButton" mnemonicParsing="false" prefHeight="52.0" prefWidth="130.0" text="SDE 2021" />
+                  <Button fx:id="sde2021ClassButton" mnemonicParsing="false" onAction="#handleSDE2021Class" prefHeight="52.0" prefWidth="130.0" text="SDE 2021" />
                   <VBox prefHeight="60.0" prefWidth="390.0">
                      <children>
                         <Label fx:id="sde2021Student" prefHeight="20.0" prefWidth="350.0" text="Students with absence over 15%" />
@@ -55,7 +55,7 @@
       </VBox>
    </left>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="446.0" BorderPane.alignment="CENTER_LEFT">
+      <HBox alignment="CENTER" onDragDetected="#handleSCO2020Class" prefHeight="100.0" prefWidth="446.0" BorderPane.alignment="CENTER_LEFT">
          <children>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton" text="Tilbage">
                <HBox.margin>
