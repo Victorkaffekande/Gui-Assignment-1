@@ -1,12 +1,11 @@
 package BLL;
 
 import BE.Student;
-import BE.Subject;
+import BE.Lesson;
 import DAL.StudentDAO;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class StudentManager {
@@ -20,7 +19,7 @@ public class StudentManager {
     public ArrayList<Student> getAllstudents(){
         return studentDAO.getAllStudents();
     }
-    public ObservableList<Subject> getRecentSubjects(Student student){
+    public ObservableList<Lesson> getRecentSubjects(Student student){
         return studentDAO.getRecentLessons(student);
     }
 }

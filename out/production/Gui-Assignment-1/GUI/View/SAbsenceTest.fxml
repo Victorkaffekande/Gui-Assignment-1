@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="Anchorpane" stylesheets="@SAbsenceTest.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.StudentAbsenceController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="Anchorpane" stylesheets="@SAbsenceTest.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.StudentAbsenceController">
    <BorderPane fx:id="borderPane" prefHeight="457.0" prefWidth="691.0">
       <top>
          <Pane prefHeight="73.0" prefWidth="691.0" styleClass="topPane" BorderPane.alignment="CENTER">
@@ -20,6 +20,13 @@
       </top>
       <left>
          <VBox prefHeight="317.0" prefWidth="160.0" styleClass="vbox" BorderPane.alignment="CENTER">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleDagensLektioner" prefHeight="40.0" prefWidth="160.0" text="Dagens lektioner">
+               <graphic>
+                  <ImageView fitHeight="44.0" fitWidth="44.0" preserveRatio="true" smooth="false">
+                     <Image url="@../../images/chart_64px.png" />
+                  </ImageView>
+               </graphic>
+            </Button>
             <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleSeFravær" prefHeight="40.0" prefWidth="160.0" text="Se fravær" textAlignment="CENTER">
                <VBox.margin>
                   <Insets />
@@ -29,13 +36,6 @@
                      <image>
                         <Image url="@../../images/person_64px.png" />
                      </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleRedigerFravær" prefHeight="40.0" prefWidth="160.0" text="Rediger fravær">
-               <graphic>
-                  <ImageView fitHeight="44.0" fitWidth="44.0" preserveRatio="true" smooth="false">
-                     <Image url="@../../images/chart_64px.png" />
                   </ImageView>
                </graphic>
             </Button>

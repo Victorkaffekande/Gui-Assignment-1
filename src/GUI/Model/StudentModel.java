@@ -1,7 +1,7 @@
 package GUI.Model;
 
 import BE.Student;
-import BE.Subject;
+import BE.Lesson;
 import BLL.StudentManager;
 import javafx.collections.ObservableList;
 
@@ -22,7 +22,7 @@ public class StudentModel {
         return studentManager.getAllstudents();
     }
 
-    public ObservableList<Subject> getRecentLessons(Student student){
+    public ObservableList<Lesson> getRecentLessons(Student student){
         return studentManager.getRecentSubjects(student);
     }
 }

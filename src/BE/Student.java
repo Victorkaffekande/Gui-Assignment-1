@@ -6,13 +6,13 @@ public class Student {
 
 
     private String userImagePath;
-    private ArrayList<Subject> subjectList;
+    private ArrayList<Lesson> lessonList;
     private String name;
-    public Student(String name,String userImagePath, ArrayList<Subject> subjectList){
+    public Student(String name,String userImagePath, ArrayList<Lesson> lessonList){
         this.name = name;
 
         this.userImagePath = userImagePath;
-        this.subjectList = subjectList;
+        this.lessonList = lessonList;
     }
 
 
@@ -20,8 +20,8 @@ public class Student {
         return userImagePath;
     }
 
-    public ArrayList<Subject> getSubjectList() {
-        return subjectList;
+    public ArrayList<Lesson> getLessonList() {
+        return lessonList;
     }
 
     @Override

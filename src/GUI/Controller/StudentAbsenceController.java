@@ -1,7 +1,7 @@
 package GUI.Controller;
 
 import BE.Student;
-import BE.Subject;
+import BE.Lesson;
 import GUI.Model.StudentModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,13 +16,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static javafx.scene.control.TableView.CONSTRAINED_RESIZE_POLICY;
-import static javafx.scene.control.TableView.UNCONSTRAINED_RESIZE_POLICY;
 
 public class StudentAbsenceController implements Initializable {
     public BorderPane borderPane;
@@ -37,9 +35,69 @@ public class StudentAbsenceController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        drawPieChart();
+        drawDagensLektioner();
     }
 
+
+
+    public void handleSeFravær(ActionEvent actionEvent) {
+        drawPieChart();
+
+    }
+
+    public void handleDagensLektioner(ActionEvent actionEvent) {
+        drawDagensLektioner();
+    }
+    public void handleAfslut(ActionEvent actionEvent) {
+        System.exit(1);
+    }
+    private void drawDagensLektioner(){
+        borderPane.setCenter(null);
+        TableView<Lesson> mondayTV = new TableView<>();
+        mondayTV.setItems(studentModel.getRecentLessons(student));
+        TableColumn<Lesson,String> mondayTC = new TableColumn<>("Monday");
+
+        TableView<Lesson> tuesdayTV = new TableView<>();
+        TableColumn<Lesson,String> tuesdayTC = new TableColumn<>("Tuesday");
+
+        TableView<Lesson> wednesdayTV = new TableView<>();
+        TableColumn<Lesson,String> wednesdayTC = new TableColumn<>("Wednesday");
+        TableView<Lesson> thursdayTV = new TableView<>();
+        TableColumn<Lesson,String> thursdayTC = new TableColumn<>("Thursday");
+        TableView<Lesson> fridayTV = new TableView<>();
+        TableColumn<Lesson,String> fridayTC = new TableColumn<>("Friday");
+
+        mondayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
+        tuesdayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
+        wednesdayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
+        thursdayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
+        fridayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
+        mondayTV.getColumns().add(mondayTC);
+        tuesdayTV.getColumns().add(tuesdayTC);
+        wednesdayTV.getColumns().add(wednesdayTC);
+        thursdayTV.getColumns().add(thursdayTC);
+        fridayTV.getColumns().add(fridayTC);
+
+        mondayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
+        tuesdayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
+        wednesdayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
+        thursdayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
+        fridayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
+
+
+        ///TODO BUTTONS
+
+
+        HBox hbox = new HBox();
+        hbox.getChildren().add(mondayTV);
+        hbox.getChildren().add(tuesdayTV);
+        hbox.getChildren().add(wednesdayTV);
+        hbox.getChildren().add(thursdayTV);
+        hbox.getChildren().add(fridayTV);
+
+
+        borderPane.setCenter(hbox);
+    }
     private void drawPieChart() {
         PieChart pieChart = new PieChart();
         Map<String, Integer> map = studentModel.getStudentAttendance(student);
@@ -83,63 +141,5 @@ public class StudentAbsenceController implements Initializable {
         vbox.getChildren().add(label);
         vbox.getChildren().add(pieChart);
         borderPane.setCenter(vbox);
-    }
-
-    public void handleSeFravær(ActionEvent actionEvent) {
-        drawPieChart();
-
-    }
-
-    public void handleRedigerFravær(ActionEvent actionEvent) {
-        borderPane.setCenter(null);
-        TableView<Subject> mondayTV = new TableView<>();
-        mondayTV.setItems(studentModel.getRecentLessons(student));
-        TableColumn<Subject,String> mondayTC = new TableColumn<>("Monday");
-
-        TableView<Subject> tuesdayTV = new TableView<>();
-        TableColumn<Subject,String> tuesdayTC = new TableColumn<>("Tuesday");
-
-        TableView<Subject> wednesdayTV = new TableView<>();
-        TableColumn<Subject,String> wednesdayTC = new TableColumn<>("Wednesday");
-        TableView<Subject> thursdayTV = new TableView<>();
-        TableColumn<Subject,String> thursdayTC = new TableColumn<>("Thursday");
-        TableView<Subject> fridayTV = new TableView<>();
-        TableColumn<Subject,String> fridayTC = new TableColumn<>("Friday");
-
-        mondayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
-        tuesdayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
-        wednesdayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
-        thursdayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
-        fridayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
-        mondayTV.getColumns().add(mondayTC);
-        tuesdayTV.getColumns().add(tuesdayTC);
-        wednesdayTV.getColumns().add(wednesdayTC);
-        thursdayTV.getColumns().add(thursdayTC);
-        fridayTV.getColumns().add(fridayTC);
-
-        mondayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
-        tuesdayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
-        wednesdayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
-        thursdayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
-        fridayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
-
-
-      ///TODO BUTTONS
-
-
-        HBox hbox = new HBox();
-        hbox.getChildren().add(mondayTV);
-        hbox.getChildren().add(tuesdayTV);
-        hbox.getChildren().add(wednesdayTV);
-        hbox.getChildren().add(thursdayTV);
-        hbox.getChildren().add(fridayTV);
-
-
-        borderPane.setCenter(hbox);
-
-    }
-
-    public void handleAfslut(ActionEvent actionEvent) {
-        System.exit(1);
     }
 }

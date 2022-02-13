@@ -4,13 +4,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-public class Subject {
+public class Lesson {
     private final String subjectName;
     private boolean attended;
     private final Teacher teacher;
     private LocalDateTime localDateTime;
 
-    public Subject(String subjectName,Teacher teacher,LocalDateTime localDateTime){
+    public Lesson(String subjectName, Teacher teacher, LocalDateTime localDateTime){
         this.attended = true;
         this.subjectName = subjectName;
         this.teacher = teacher;
