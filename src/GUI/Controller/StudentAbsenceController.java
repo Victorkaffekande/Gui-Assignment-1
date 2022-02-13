@@ -1,35 +1,145 @@
 package GUI.Controller;
 
+import BE.Student;
+import BE.Subject;
+import GUI.Model.StudentModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class StudentAbsenceController implements Initializable {
+import static javafx.scene.control.TableView.CONSTRAINED_RESIZE_POLICY;
+import static javafx.scene.control.TableView.UNCONSTRAINED_RESIZE_POLICY;
 
-    public BorderPane borderpane;
-    public PieChart pieChart;
+public class StudentAbsenceController implements Initializable {
+    public BorderPane borderPane;
+
+    StudentModel studentModel;
+    Student student;
+
+    public StudentAbsenceController() {
+        studentModel = new StudentModel();
+        student = studentModel.getAllStudents().get(0); // sætter den valgte Student til at være karsten, den første og eneste
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    drawPieChart();
+        drawPieChart();
     }
 
-    private void drawPieChart(){
-        ObservableList<PieChart.Data> pieData = FXCollections.observableArrayList(
-                new PieChart.Data("SCO", 4),
-                new PieChart.Data("ITO",6),
-                new PieChart.Data("SDE",1),
-                new PieChart.Data("Tilstede",33)
-        );
+    private void drawPieChart() {
+        PieChart pieChart = new PieChart();
+        Map<String, Integer> map = studentModel.getStudentAttendance(student);
+        int attendedCount = map.get("ATTENDED");
+        int scoCount = map.get("SCO");
+        int itoCount = map.get("ITO");
+        int sdeCount = map.get("SDE");
+        ObservableList<PieChart.Data> pieData = FXCollections.observableArrayList();
+
+        if (scoCount > 0) {
+            pieData.add(new PieChart.Data("SCO", scoCount));
+        }
+        if (itoCount > 0) {
+            pieData.add(new PieChart.Data("ITO", itoCount));
+        }
+
+        if (sdeCount > 0) {
+            pieData.add(new PieChart.Data("SDE", sdeCount));
+        }
+
+        if (attendedCount > 0) {
+            pieData.add(new PieChart.Data("Til stede", attendedCount));
+        }
+
         pieChart.setLegendVisible(false);
         pieChart.setData(pieData);
+        javafx.scene.control.Label label = new Label();
+        double missing = 0;
+        double total = 0;
+        for (PieChart.Data data : pieData) {
+            if (!Objects.equals(data.getName(), "Til stede")) {
+                missing += data.getPieValue();
+            }
+            total += data.getPieValue();
+        }
+        String percent = String.format("%.1f%%", 100 * missing / total);
+        label.setText(String.valueOf("Dit fravær er " + percent));
+
+        VBox vbox = new VBox();
+        vbox.setAlignment(Pos.CENTER);
+        vbox.getChildren().add(label);
+        vbox.getChildren().add(pieChart);
+        borderPane.setCenter(vbox);
+    }
+
+    public void handleSeFravær(ActionEvent actionEvent) {
+        drawPieChart();
+
+    }
+
+    public void handleRedigerFravær(ActionEvent actionEvent) {
+        borderPane.setCenter(null);
+        TableView<Subject> mondayTV = new TableView<>();
+        mondayTV.setItems(studentModel.getRecentLessons(student));
+        TableColumn<Subject,String> mondayTC = new TableColumn<>("Monday");
+
+        TableView<Subject> tuesdayTV = new TableView<>();
+        TableColumn<Subject,String> tuesdayTC = new TableColumn<>("Tuesday");
+
+        TableView<Subject> wednesdayTV = new TableView<>();
+        TableColumn<Subject,String> wednesdayTC = new TableColumn<>("Wednesday");
+        TableView<Subject> thursdayTV = new TableView<>();
+        TableColumn<Subject,String> thursdayTC = new TableColumn<>("Thursday");
+        TableView<Subject> fridayTV = new TableView<>();
+        TableColumn<Subject,String> fridayTC = new TableColumn<>("Friday");
+
+        mondayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
+        tuesdayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
+        wednesdayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
+        thursdayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
+        fridayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
+        mondayTV.getColumns().add(mondayTC);
+        tuesdayTV.getColumns().add(tuesdayTC);
+        wednesdayTV.getColumns().add(wednesdayTC);
+        thursdayTV.getColumns().add(thursdayTC);
+        fridayTV.getColumns().add(fridayTC);
+
+        mondayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
+        tuesdayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
+        wednesdayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
+        thursdayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
+        fridayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
+
+
+      ///TODO BUTTONS
+
+
+        HBox hbox = new HBox();
+        hbox.getChildren().add(mondayTV);
+        hbox.getChildren().add(tuesdayTV);
+        hbox.getChildren().add(wednesdayTV);
+        hbox.getChildren().add(thursdayTV);
+        hbox.getChildren().add(fridayTV);
+
+
+        borderPane.setCenter(hbox);
+
+    }
+
+    public void handleAfslut(ActionEvent actionEvent) {
+        System.exit(1);
     }
 }

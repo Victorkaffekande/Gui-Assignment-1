@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="301.0" prefWidth="405.0" stylesheets="@LoginTest.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.LoginTestController">
+<AnchorPane prefHeight="301.0" prefWidth="405.0" stylesheets="@LoginTest.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.LoginTestController">
    <children>
       <Pane prefHeight="150.0" prefWidth="405.0" styleClass="pane" />
       <AnchorPane id="topPane" layoutX="24.0" layoutY="25.0" prefHeight="251.0" prefWidth="360.0">
@@ -22,9 +22,9 @@
                         <Image url="@../../images/EASV%20RGB%20invert.png" />
                      </image>
                   </ImageView>
-                  <TextField promptText="Username" />
-                  <PasswordField promptText="Password" />
-                  <JFXButton text="Log in" textFill="WHITE">
+                  <TextField fx:id="usernameInput" promptText="Username" />
+                  <PasswordField fx:id="passwordInput" promptText="Password" />
+                  <JFXButton onAction="#handleLoginButton" text="Log in" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
