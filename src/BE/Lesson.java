@@ -8,17 +8,23 @@ public class Lesson {
     private final String subjectName;
     private boolean attended;
     private final Teacher teacher;
-    private LocalDateTime localDateTime;
+    private final LocalDateTime localDateTime;
+    private String time;
 
     public Lesson(String subjectName, Teacher teacher, LocalDateTime localDateTime){
         this.attended = true;
         this.subjectName = subjectName;
         this.teacher = teacher;
         this.localDateTime = localDateTime;
+        this.time = getStartTime();
     }
 
     public String getSubjectName() {
         return subjectName;
+    }
+
+    public String getTime() {
+        return time;
     }
 
     public boolean getAttended() {
@@ -35,6 +41,11 @@ public class Lesson {
 
     public void setAttended(boolean b){
         attended = b;
+    }
+
+    private String getStartTime(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return localDateTime.format(formatter);
     }
 
     @Override

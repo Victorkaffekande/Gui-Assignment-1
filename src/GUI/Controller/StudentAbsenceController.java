@@ -6,15 +6,18 @@ import GUI.Model.StudentModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
 import java.util.Objects;
@@ -24,6 +27,7 @@ import static javafx.scene.control.TableView.CONSTRAINED_RESIZE_POLICY;
 
 public class StudentAbsenceController implements Initializable {
     public BorderPane borderPane;
+    public AnchorPane contentArea;
 
     StudentModel studentModel;
     Student student;
@@ -35,69 +39,35 @@ public class StudentAbsenceController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        drawDagensLektioner();
+        try {
+            loadPage("/GUI/View/TodaysLessonsView.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
-
-
 
     public void handleSeFravær(ActionEvent actionEvent) {
         drawPieChart();
-
     }
 
-    public void handleDagensLektioner(ActionEvent actionEvent) {
-        drawDagensLektioner();
+    public void handleDagensLektioner(ActionEvent actionEvent) throws IOException {
+        loadPage("/GUI/View/TodaysLessonsView.fxml");
+        //tableView.setItems(studentModel.getTodaysLessons(student));
+    }
+    private void loadPage(String pathView) throws IOException {
+        Pane pane = null;
+        try{
+            pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(pathView)));
+        }catch(Exception e){
+            System.out.println("fuck");
+        }
+        borderPane.setCenter(pane);
     }
     public void handleAfslut(ActionEvent actionEvent) {
         System.exit(1);
     }
-    private void drawDagensLektioner(){
-        borderPane.setCenter(null);
-        TableView<Lesson> mondayTV = new TableView<>();
-        mondayTV.setItems(studentModel.getRecentLessons(student));
-        TableColumn<Lesson,String> mondayTC = new TableColumn<>("Monday");
 
-        TableView<Lesson> tuesdayTV = new TableView<>();
-        TableColumn<Lesson,String> tuesdayTC = new TableColumn<>("Tuesday");
-
-        TableView<Lesson> wednesdayTV = new TableView<>();
-        TableColumn<Lesson,String> wednesdayTC = new TableColumn<>("Wednesday");
-        TableView<Lesson> thursdayTV = new TableView<>();
-        TableColumn<Lesson,String> thursdayTC = new TableColumn<>("Thursday");
-        TableView<Lesson> fridayTV = new TableView<>();
-        TableColumn<Lesson,String> fridayTC = new TableColumn<>("Friday");
-
-        mondayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
-        tuesdayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
-        wednesdayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
-        thursdayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
-        fridayTC.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
-        mondayTV.getColumns().add(mondayTC);
-        tuesdayTV.getColumns().add(tuesdayTC);
-        wednesdayTV.getColumns().add(wednesdayTC);
-        thursdayTV.getColumns().add(thursdayTC);
-        fridayTV.getColumns().add(fridayTC);
-
-        mondayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
-        tuesdayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
-        wednesdayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
-        thursdayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
-        fridayTV.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
-
-
-        ///TODO BUTTONS
-
-
-        HBox hbox = new HBox();
-        hbox.getChildren().add(mondayTV);
-        hbox.getChildren().add(tuesdayTV);
-        hbox.getChildren().add(wednesdayTV);
-        hbox.getChildren().add(thursdayTV);
-        hbox.getChildren().add(fridayTV);
-
-
-        borderPane.setCenter(hbox);
-    }
     private void drawPieChart() {
         PieChart pieChart = new PieChart();
         Map<String, Integer> map = studentModel.getStudentAttendance(student);

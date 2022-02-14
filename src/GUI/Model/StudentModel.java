@@ -22,7 +22,7 @@ public class StudentModel {
         return studentManager.getAllstudents();
     }
 
-    public ObservableList<Lesson> getRecentLessons(Student student){
-        return studentManager.getRecentSubjects(student);
+    public ObservableList<Lesson> getTodaysLessons(Student student){
+        return studentManager.getTodaysLessons(student);
     }
 }

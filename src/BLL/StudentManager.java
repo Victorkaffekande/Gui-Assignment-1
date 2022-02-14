@@ -19,7 +19,7 @@ public class StudentManager {
     public ArrayList<Student> getAllstudents(){
         return studentDAO.getAllStudents();
     }
-    public ObservableList<Lesson> getRecentSubjects(Student student){
-        return studentDAO.getRecentLessons(student);
+    public ObservableList<Lesson> getTodaysLessons(Student student){
+        return studentDAO.getTodaysLessons(student);
     }
 }

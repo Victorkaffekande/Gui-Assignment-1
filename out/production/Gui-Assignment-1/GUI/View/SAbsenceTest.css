@@ -22,6 +22,13 @@
     -fx-border-color: #CDD1D6;
     -fx-border-width: 0,0,0,3;
 }
+#yesButton{
+    -fx-background-color: limegreen;
+}
+
+#noButton{
+    -fx-background-color: orangered;
+}
 
 .label{
     -fx-font-family: "Droid Sans";
@@ -30,7 +37,15 @@
 }
 .topPane{
     -fx-background-color:  #e29c03;
+    -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0);
 }
 .vbox{
     -fx-background-color: #fcb51d;
+}
+
+.table-view{
+    -fx-border-color: black;
+}
+.table-column{
+    -fx-background-color: #e29c03;
 }

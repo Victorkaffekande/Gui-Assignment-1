@@ -10,20 +10,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="Anchorpane" stylesheets="@SAbsenceTest.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.StudentAbsenceController">
-   <BorderPane fx:id="borderPane" prefHeight="457.0" prefWidth="691.0">
-      <top>
-         <Pane prefHeight="73.0" prefWidth="691.0" styleClass="topPane" BorderPane.alignment="CENTER">
-            <children>
-               <Label layoutX="39.0" layoutY="28.0" text="Velkommen {elev}" />
-            </children></Pane>
-      </top>
-      <left>
-         <VBox prefHeight="317.0" prefWidth="160.0" styleClass="vbox" BorderPane.alignment="CENTER">
+<BorderPane fx:id="borderPane" prefHeight="457.0" prefWidth="691.0" stylesheets="@SAbsenceTest.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.StudentAbsenceController">
+   <top>
+      <Pane prefHeight="73.0" styleClass="topPane" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="39.0" layoutY="28.0" text="Velkommen {elev}" />
+         </children>
+      </Pane>
+   </top>
+   <left>
+      <VBox prefHeight="317.0" prefWidth="160.0" styleClass="vbox" BorderPane.alignment="CENTER">
+         <children>
             <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleDagensLektioner" prefHeight="40.0" prefWidth="160.0" text="Dagens lektioner">
                <graphic>
                   <ImageView fitHeight="44.0" fitWidth="44.0" preserveRatio="true" smooth="false">
-                     <Image url="@../../images/chart_64px.png" />
+                     <image>
+                        <Image url="@../../images/chart_64px.png" />
+                     </image>
                   </ImageView>
                </graphic>
             </Button>
@@ -42,11 +45,16 @@
             <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleAfslut" prefHeight="40.0" prefWidth="160.0" text="Afslut">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0">
-                     <Image url="@../../images/Logout_48px.png" />
+                     <image>
+                        <Image url="@../../images/Logout_48px.png" />
+                     </image>
                   </ImageView>
                </graphic>
             </Button>
-         </VBox>
-      </left>
-   </BorderPane>
-</AnchorPane>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <AnchorPane fx:id="contentArea" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="TOP_LEFT" />
+   </center>
+</BorderPane>

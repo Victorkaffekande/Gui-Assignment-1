@@ -33,19 +33,10 @@ public class LoginTestController implements Initializable {
             stage.centerOnScreen();
             stage.show();
 
-
-
-            /*
-             Stage stageOld = (Stage) usernameInput.getScene().getWindow();
-            stageOld.close();
-             */
-
-
         }
         else {
             error();
         }
-        //noget med en Loader
         //TODO RENAME STUDENABCESNCE TO STUDENTVIEW OG LAV EN tEACHER VIEW
     }
 

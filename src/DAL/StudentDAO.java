@@ -14,7 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StudentDAO {
-    private final LocalDateTime today = LocalDateTime.of(2022,Month.FEBRUARY,21,16,20); //"i dag" En falsk dato
+    private final LocalDateTime today = LocalDateTime.of(2022,Month.FEBRUARY,21,10,20); //"i dag" En falsk dato
+    private final LocalDateTime todayMorning = LocalDateTime.of(2022,Month.FEBRUARY,21,8,14);
 
     public Map<String,Integer> getStudentAttendance(Student student){
         int scoNotAttended = 0;
@@ -53,12 +54,12 @@ public class StudentDAO {
         return allStudents;
     }
 
-    public ObservableList<Lesson> getRecentLessons(Student student){
+    public ObservableList<Lesson> getTodaysLessons(Student student){
         ArrayList<Lesson> allLessons = student.getLessonList();
         ObservableList<Lesson> recentLessons = FXCollections.observableArrayList();
-        LocalDateTime aWeekAgo = today.minus(1, ChronoUnit.WEEKS);
+
         for (Lesson s : allLessons){
-            if (s.getDate().isAfter(aWeekAgo) && s.getDate().isBefore(today)){
+            if (s.getDate().isAfter(todayMorning) && s.getDate().isBefore(today)){
                 recentLessons.add(s);
             }
         }
@@ -110,7 +111,7 @@ public class StudentDAO {
         monday.add(new Lesson(sde,teacher1,LocalDateTime.of(2022,Month.FEBRUARY,dayOfMonth,timeList.get(1)[0],timeList.get(1)[1])));
         monday.add(new Lesson(sde,teacher1,LocalDateTime.of(2022,Month.FEBRUARY,dayOfMonth,timeList.get(2)[0],timeList.get(2)[1])));
         monday.add(new Lesson(sde,teacher1,LocalDateTime.of(2022,Month.FEBRUARY,dayOfMonth,timeList.get(3)[0],timeList.get(3)[1])));
-        //kom ikke i skole hele mandag
+        //kom ikke i skole hele mandag, hver mandag
         for (Lesson lesson : monday) {
             lesson.setAttended(false);
         }
