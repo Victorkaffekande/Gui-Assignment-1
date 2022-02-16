@@ -16,7 +16,7 @@
       <top>
          <Pane prefHeight="73.0" prefWidth="691.0" styleClass="topPane" BorderPane.alignment="CENTER">
             <children>
-               <Label layoutX="39.0" layoutY="28.0" text="Velkommen {elev}" />
+               <Label fx:id="lblName" layoutX="39.0" layoutY="28.0" text="Velkommen {elev}" />
             </children></Pane>
       </top>
       <left>

@@ -6,11 +6,14 @@ public class Teacher {
     private String name;
     private List<Subject> subjects;
     private Classroom classroom;
+    private String username;
+    private String password;
 
-    public Teacher(String name, List<Subject> subjects, Classroom classroom) {
+    public Teacher(String name, Classroom classroom, String username, String password) {
         this.name = name;
-        this.subjects = subjects;
         this.classroom = classroom;
+        this.password = password;
+        this.username = username;
     }
 
     public String getName() {
@@ -35,5 +38,21 @@ public class Teacher {
 
     public void setClassroom(Classroom classroom) {
         this.classroom = classroom;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
