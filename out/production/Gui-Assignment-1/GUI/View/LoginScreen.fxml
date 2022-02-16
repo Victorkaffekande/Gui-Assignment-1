@@ -18,6 +18,7 @@
       </ImageView>
       <AnchorPane id="anchor" layoutX="67.0" layoutY="63.0" prefHeight="249.0" prefWidth="427.0">
          <children>
+            <AnchorPane id="Anchor" opacity="0.15" prefHeight="249.0" prefWidth="427.0" />
             <Label layoutX="24.0" layoutY="21.0" text="Username">
                <font>
                   <Font size="18.0" />
@@ -32,7 +33,6 @@
             <TextField layoutX="24.0" layoutY="135.0" prefHeight="25.0" prefWidth="380.0" />
             <CheckBox graphicTextGap="0.0" layoutX="26.0" layoutY="172.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="102.0" text="Remember me" textOverrun="CLIP" />
             <Button layoutX="24.0" layoutY="201.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="380.0" text="Login" />
-            <AnchorPane id="Anchor" opacity="0.15" prefHeight="249.0" prefWidth="427.0" />
          </children>
       </AnchorPane>
    </children>
