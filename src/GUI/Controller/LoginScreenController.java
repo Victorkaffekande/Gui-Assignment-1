@@ -44,12 +44,14 @@ public class LoginScreenController {
        for (Student student: studentModel.getAllStudents()){
            if (usernameTxt.getText().equals(student.getUsername()) && passwordTxt.getText().equals(student.getPassword())){
                openScene("/GUI/View/SAbsenceTest.fxml",false, true, "Student Absence", false);
+                break;
            }
        }
 
        for (Teacher teacher: teacherModel.getAllTeachers()){
            if (usernameTxt.getText().equals(teacher.getUsername()) && passwordTxt.getText().equals(teacher.getPassword())){
                openScene("/GUI/View/TeacherOverview.fxml",false, true, "Teacher Overview", false);
+                break;
            }
        }
 
