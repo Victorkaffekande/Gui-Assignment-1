@@ -7,6 +7,8 @@ import BLL.TeacherManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.List;
+
 public class TeacherModel {
 
     public TeacherManager teacherManager;
@@ -22,5 +24,17 @@ public class TeacherModel {
         classroomList.addAll(teacherManager.getAllClassrooms());
         subjectList = FXCollections.observableArrayList();
         subjectList.addAll(teacherManager.getAllSubjects());
+    }
+
+    public List<Teacher> getAllTeachers(){
+        return teacherManager.getAllTeachers();
+    }
+
+    public List<Classroom> getAllClassrooms(){
+        return teacherManager.getAllClassrooms();
+    }
+
+    public List<Subject> getAllSubjects(){
+        return teacherManager.getAllSubjects();
     }
 }

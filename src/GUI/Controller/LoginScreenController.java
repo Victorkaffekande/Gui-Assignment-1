@@ -5,6 +5,7 @@ import BE.Student;
 import BE.Subject;
 import BE.Teacher;
 import GUI.Model.StudentModel;
+import GUI.Model.TeacherModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +26,7 @@ public class LoginScreenController {
     Teacher teacher;
 
     StudentModel studentModel;
+    TeacherModel teacherModel;
 
 
     @FXML
@@ -33,21 +35,24 @@ public class LoginScreenController {
     private TextField passwordTxt;
 
     public LoginScreenController() {
-        List<Subject> SCO2020 = null;
-        Classroom c3= null;
         studentModel = new StudentModel();
-        student = new Student("Søren", "tunsad",SCO2020 ,"soren123", "soren1234");
-        teacher = new Teacher("Jeppe", c3, "jeppe123", "jeppe1234");
+        teacherModel = new TeacherModel();
     }
 
 
     public void handleLogin(ActionEvent actionEvent) throws IOException {
-        if (usernameTxt.getText().equals(studentModel.getAllStudents().get(2).getUsername()) && passwordTxt.getText().equals(studentModel.getAllStudents().get(2).getPassword())){
-        openScene("/GUI/View/SAbsenceTest.fxml",false, true, "Student Absence", false);
-        }
-        if (usernameTxt.getText().equals(teacher.getUsername()) && passwordTxt.getText().equals(teacher.getPassword())){
-            openScene("/GUI/View/TeacherOverview.fxml",false, true, "Teacher Overview", false);
-        }
+       for (Student student: studentModel.getAllStudents()){
+           if (usernameTxt.getText().equals(student.getUsername()) && passwordTxt.getText().equals(student.getPassword())){
+               openScene("/GUI/View/SAbsenceTest.fxml",false, true, "Student Absence", false);
+           }
+       }
+
+       for (Teacher teacher: teacherModel.getAllTeachers()){
+           if (usernameTxt.getText().equals(teacher.getUsername()) && passwordTxt.getText().equals(teacher.getPassword())){
+               openScene("/GUI/View/TeacherOverview.fxml",false, true, "Teacher Overview", false);
+           }
+       }
+
     }
 
     public void openScene(String pathToFXML, boolean undecorated, boolean showAndWait, String title, boolean resizable) throws IOException {
