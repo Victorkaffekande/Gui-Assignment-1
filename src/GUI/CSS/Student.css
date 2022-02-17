@@ -79,6 +79,7 @@
 
 .table-view .column-header .label{
     -fx-text-fill: white;
+    -fx-font-size: 25;
 }
 
 .table-row-cell:empty {
@@ -88,5 +89,5 @@
 .container{
     -fx-background-radius: 30;
     -fx-background-color: -fx-secondary-color;
-    -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0);
+    -fx-effect: dropshadow(gaussian, black, 5, 0, 0, 0);
 }
