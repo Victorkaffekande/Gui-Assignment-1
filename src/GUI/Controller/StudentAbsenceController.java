@@ -2,6 +2,7 @@ package GUI.Controller;
 
 import BE.Student;
 import BE.Subject;
+import GUI.Model.StudentModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -17,20 +18,23 @@ import java.util.ResourceBundle;
 
 public class StudentAbsenceController implements Initializable {
 
-    Student student;
     public BorderPane borderpane;
     public PieChart pieChart;
     public Label lblName;
 
+    StudentModel studentModel;
     public StudentAbsenceController() {
-        List<Subject> SCO2020 = null;
-        student = new Student("Sigurd", "tunsad",SCO2020 ,"soren123", "soren1234");
+        studentModel = new StudentModel();
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     drawPieChart();
-    lblName.setText("Velkommen" + " " + student.getName());
+    for(Student student: studentModel.getAllStudents()){
+        lblName.setText("Velkommen" + " " + student.getName());
+    }
+
     }
 
     private void drawPieChart(){
