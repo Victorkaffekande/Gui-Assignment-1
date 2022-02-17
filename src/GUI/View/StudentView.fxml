@@ -31,11 +31,11 @@
             <VBox alignment="TOP_CENTER" spacing="5.0">
                <children>
                   <Label text="Dagens lektioner" />
-                  <TableView fx:id="tableView" fixedCellSize="0.0" prefHeight="382.0" prefWidth="283.0" scaleShape="false">
+                  <TableView fx:id="tableView" fixedCellSize="0.0" prefWidth="300.0" scaleShape="false">
                     <columns>
-                      <TableColumn fx:id="TCkl" prefWidth="55.0" text="kl." />
-                      <TableColumn fx:id="TCLessons" prefWidth="86.0" text="Time" />
-                        <TableColumn fx:id="TCStatus" prefWidth="37.0" text="Status" />
+                      <TableColumn fx:id="TCkl" minWidth="-1.0" prefWidth="-1.0" text="kl." />
+                      <TableColumn fx:id="TCLessons" minWidth="-1.0" prefWidth="-1.0" text="Time" />
+                        <TableColumn fx:id="TCStatus" minWidth="-1.0" prefWidth="-1.0" text="Status" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
