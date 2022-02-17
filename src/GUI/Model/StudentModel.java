@@ -5,6 +5,7 @@ import BE.Lesson;
 import BLL.StudentManager;
 import javafx.collections.ObservableList;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -24,5 +25,9 @@ public class StudentModel {
 
     public ObservableList<Lesson> getTodaysLessons(Student student){
         return studentManager.getTodaysLessons(student);
+    }
+
+    public String getToday(){
+        return studentManager.getToday();
     }
 }

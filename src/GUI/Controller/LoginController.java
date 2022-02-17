@@ -16,16 +16,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginTestController implements Initializable {
+public class LoginController implements Initializable {
     public TextField usernameInput;
     public PasswordField passwordInput;
 
     public void handleLoginButton(ActionEvent actionEvent) throws IOException {
-        String sUsername = "k";
-        String sPassword = "k";
+        String sUsername = "flemming@easv.dk";
+        String sPassword = "flemming";
         //karsten@easv.dk
         if (usernameInput.getText().trim().equals(sUsername) && passwordInput.getText().trim().equals(sPassword)){
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI/View/SAbsenceTest.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI/View/StudentView.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -37,7 +37,6 @@ public class LoginTestController implements Initializable {
         else {
             error();
         }
-        //TODO RENAME STUDENABCESNCE TO STUDENTVIEW OG LAV EN tEACHER VIEW
     }
 
     private void error(){

@@ -10,7 +10,6 @@ public class Student {
     private String name;
     public Student(String name,String userImagePath, ArrayList<Lesson> lessonList){
         this.name = name;
-
         this.userImagePath = userImagePath;
         this.lessonList = lessonList;
     }
@@ -26,6 +25,10 @@ public class Student {
 
     @Override
     public String toString() {
+        return name;
+    }
+
+    public String getName() {
         return name;
     }
 }

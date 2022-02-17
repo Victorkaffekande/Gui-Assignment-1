@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,6 +17,20 @@ import java.util.Map;
 public class StudentDAO {
     private final LocalDateTime today = LocalDateTime.of(2022,Month.FEBRUARY,21,10,20); //"i dag" En falsk dato
     private final LocalDateTime todayMorning = LocalDateTime.of(2022,Month.FEBRUARY,21,8,14);
+    Teacher teacher1 = new Teacher("Jørgen Holm");
+    Teacher teacher2 = new Teacher("Simon Nielsen");
+    Teacher teacher3 = new Teacher("Kirstine Petersen");
+    Teacher teacher4 = new Teacher("Bjarne Olesen");
+
+    String sde = "SDE";
+    String dbo = "DBO";
+    String sco = "SCO";
+    String ito = "ITO";
+
+    public String getToday() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return today.format(formatter);
+    }
 
     public Map<String,Integer> getStudentAttendance(Student student){
         int scoNotAttended = 0;
@@ -50,7 +65,7 @@ public class StudentDAO {
 
     public ArrayList<Student> getAllStudents(){
     ArrayList<Student> allStudents = new ArrayList<>();
-        allStudents.add(new Student("karsten","images/flemming.jpeg",get1stYear()));
+        allStudents.add(new Student("Flemming Testmen","images/flemming.jpeg",get1stYear()));
         return allStudents;
     }
 
@@ -64,11 +79,6 @@ public class StudentDAO {
             }
         }
         return recentLessons;
-    }
-
-    public ObservableList<Lesson> getTodaysLessons(){
-        ///TODO
-        return null;
     }
 
     /**
@@ -101,29 +111,17 @@ public class StudentDAO {
         return lessonsInSemester;
     }
     private ArrayList<Lesson> monday(int dayOfMonth){
-        Teacher teacher1 = new Teacher("Jørgen Holm");
-        Teacher teacher2 = new Teacher("Simon Nielsen");
-        Teacher teacher3 = new Teacher("Kirstine Petersen");
-        String sde = "SDE";
         ArrayList<int[]> timeList = getLessonStartTimes();
 
         ArrayList<Lesson> monday = new ArrayList<>();
         monday.add(new Lesson(sde,teacher1,LocalDateTime.of(2022,Month.FEBRUARY,dayOfMonth,timeList.get(1)[0],timeList.get(1)[1])));
         monday.add(new Lesson(sde,teacher1,LocalDateTime.of(2022,Month.FEBRUARY,dayOfMonth,timeList.get(2)[0],timeList.get(2)[1])));
         monday.add(new Lesson(sde,teacher1,LocalDateTime.of(2022,Month.FEBRUARY,dayOfMonth,timeList.get(3)[0],timeList.get(3)[1])));
-        //kom ikke i skole hele mandag, hver mandag
-        for (Lesson lesson : monday) {
-            lesson.setAttended(false);
-        }
+
         return monday;
     }
     private ArrayList<Lesson> tuesday(int dayOfMonth){
-        Teacher teacher3 = new Teacher("Kirstine Petersen");
-        Teacher teacher2 = new Teacher("Simon Nielsen");
         ArrayList<int[]> timeList = getLessonStartTimes();
-        String dbo = "dbo";
-        String sco = "SCO";
-
         ArrayList<Lesson> tuesday = new ArrayList<>();
         //dbo
         tuesday.add(new Lesson(dbo,teacher3,LocalDateTime.of(2022,Month.FEBRUARY,dayOfMonth,timeList.get(0)[0],timeList.get(0)[1])));
@@ -134,14 +132,14 @@ public class StudentDAO {
         tuesday.add(new Lesson(sco,teacher2,LocalDateTime.of(2022,Month.FEBRUARY,dayOfMonth,timeList.get(4)[0],timeList.get(4)[1])));
         tuesday.add(new Lesson(sco,teacher2,LocalDateTime.of(2022,Month.FEBRUARY,dayOfMonth,timeList.get(5)[0],timeList.get(5)[1])));
         tuesday.add(new Lesson(sco,teacher2,LocalDateTime.of(2022,Month.FEBRUARY,dayOfMonth,timeList.get(6)[0],timeList.get(6)[1])));
+        //kom ikke i skole hele mandag, hver mandag
+        for (Lesson lesson : tuesday) {
+            lesson.setAttended(false);
+        }
         return tuesday;
     }
     private ArrayList<Lesson> wednesday(int dayOfMonth){
-        Teacher teacher1 = new Teacher("Jørgen Holm");
-        Teacher teacher2 = new Teacher("Simon Nielsen");
-        Teacher teacher3 = new Teacher("Kirstine Petersen");
-        String sco = "SCO";
-        String sde = "SDE";
+
         ArrayList<int[]> timeList = getLessonStartTimes();
         ArrayList<Lesson> wednesday = new ArrayList<>();
         wednesday.add(new Lesson(sco,teacher2,LocalDateTime.of(2022,Month.FEBRUARY,dayOfMonth,timeList.get(1)[0],timeList.get(1)[1])));
@@ -154,8 +152,7 @@ public class StudentDAO {
         return wednesday;
     }
     private ArrayList<Lesson> thursday(int dayOfMonth){
-        Teacher teacher4 = new Teacher("Bjarne Olesen");
-        String ito = "ITO";
+
         
         ArrayList<int[]> timeList = getLessonStartTimes();
         ArrayList<Lesson> thursday = new ArrayList<>();
@@ -167,8 +164,7 @@ public class StudentDAO {
         return thursday;
     }
     private ArrayList<Lesson> friday(int dayOfMonth){
-        Teacher teacher4 = new Teacher("Bjarne Olesen");
-        String sco = "SCO";
+
         
         ArrayList<int[]> timeList = getLessonStartTimes();
         ArrayList<Lesson> friday = new ArrayList<>();

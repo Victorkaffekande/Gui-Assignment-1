@@ -5,6 +5,7 @@ import BE.Lesson;
 import DAL.StudentDAO;
 import javafx.collections.ObservableList;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -21,5 +22,8 @@ public class StudentManager {
     }
     public ObservableList<Lesson> getTodaysLessons(Student student){
         return studentDAO.getTodaysLessons(student);
+    }
+    public String getToday(){
+        return studentDAO.getToday();
     }
 }
