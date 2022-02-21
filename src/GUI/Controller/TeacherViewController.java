@@ -46,6 +46,8 @@ public class TeacherViewController implements Initializable {
         nameLabel.setText(teacher.getName());
         imageView.setImage(new Image(teacher.getUserImagePath())); //fix
         klLabel.setText("Kl: " + timeHelper.getTodayTime());
+
+
     }
 
 
