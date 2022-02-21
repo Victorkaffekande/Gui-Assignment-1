@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="865.0" styleClass="borderPane" stylesheets="@../CSS/Student.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.StudentViewController">
+   <top>
+      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="98.0" prefWidth="745.0" styleClass="topPane">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="8.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0">
+               <children>
+                  <ImageView fx:id="imageView" fitHeight="80.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="nameLabel" text="{navn}" />
+                  <Label fx:id="klLabel" text="{KL}" />
+               </children>
+            </HBox>
+         </children></Pane>
+   </top>
+   <left>
+      <HBox styleClass="container" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" spacing="5.0">
+               <children>
+                  <Label text="Dagens lektioner" />
+                  <TableView fx:id="tableView" fixedCellSize="0.0" prefWidth="300.0" scaleShape="false">
+                    <columns>
+                      <TableColumn fx:id="TCkl" minWidth="-1.0" prefWidth="-1.0" text="kl." />
+                      <TableColumn fx:id="TCLessons" minWidth="-1.0" prefWidth="-1.0" text="Time" />
+                        <TableColumn fx:id="TCStatus" minWidth="-1.0" prefWidth="-1.0" text="Status" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" spacing="40.0">
+               <children>
+                  <Button id="yesButton" mnemonicParsing="false" onAction="#handleTilStedeBTN" text="Til stede">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button id="noButton" mnemonicParsing="false" onAction="#handleIkkeTilstedeBTN" text="Ikke til stede" />
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </HBox>
+   </left>
+   <center>
+      <VBox fx:id="pieVBox" alignment="TOP_CENTER" prefHeight="382.0" prefWidth="299.0" spacing="20.0" styleClass="container" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="pieLabel" text="Dit fravær er xx.x%">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <PieChart fx:id="pieChart" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>
