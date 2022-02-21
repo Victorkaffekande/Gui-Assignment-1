@@ -3,6 +3,7 @@ package GUI.Model;
 import BE.Student;
 import BE.Lesson;
 import BLL.StudentManager;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.time.LocalDateTime;
@@ -21,6 +22,12 @@ public class StudentModel {
 
     public ArrayList<Student> getAllStudents(){
         return studentManager.getAllstudents();
+    }
+
+    public ObservableList<Student> getAllObservableStudents(){
+        ObservableList<Student> observableList = FXCollections.observableArrayList();
+        observableList.addAll(studentManager.getAllstudents());
+        return  observableList;
     }
 
     public ObservableList<Lesson> getTodaysLessons(Student student){

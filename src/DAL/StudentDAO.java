@@ -13,6 +13,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class StudentDAO {
     TimeHelper timeHelper = new TimeHelper();
@@ -79,13 +80,25 @@ public class StudentDAO {
 
     public ArrayList<Student> getAllStudents() {
         ArrayList<Student> allStudents = new ArrayList<>();
-        allStudents.add(new Student("Flemming Testmen", "images/flemming.jpeg", get1stYear(),23.5));
-        allStudents.add(new Student("Hans Hammer", "images/flemming.jpeg", get1stYear(),12));
-        allStudents.add(new Student("Trine Tris", "images/flemming.jpeg", get1stYear(),4.6));
-        allStudents.add(new Student("Karsten Klam", "images/flemming.jpeg", get1stYear(),4.6));
+        allStudents.add(new Student("Flemming Testmen", "images/flemming.jpeg", get1stYear(),setStudentAbsence()));
+        allStudents.add(new Student("Hans Hammer", "images/flemming.jpeg", get1stYear(),setStudentAbsence()));
+        allStudents.add(new Student("Trine Tris", "images/flemming.jpeg", get1stYear(),setStudentAbsence()));
+        allStudents.add(new Student("Karsten Klam", "images/flemming.jpeg", get1stYear(),setStudentAbsence()));
         return allStudents;
     }
 
+
+
+    private ArrayList<Integer> setStudentAbsence() {
+        ArrayList<Integer> week = new ArrayList<>();
+        Random random = new Random();
+            week.add(random.nextInt(4));
+            week.add(random.nextInt(8));
+            week.add(random.nextInt(7));
+            week.add(random.nextInt(4));
+            week.add(random.nextInt(4));
+    return  week;
+    }
 
 
     public ObservableList<Lesson> getTodaysLessons(Student student) {

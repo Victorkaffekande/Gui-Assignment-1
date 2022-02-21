@@ -8,16 +8,28 @@ public class Student {
     private String userImagePath;
     private ArrayList<Lesson> lessonList;
     private String name;
-    private double absence;
-    public Student(String name,String userImagePath, ArrayList<Lesson> lessonList, double absence){
+    private ArrayList<Integer> absenceList;
+    private Integer absenceSum=0;
+    public Student(String name,String userImagePath, ArrayList<Lesson> lessonList, ArrayList<Integer> absenceList){
         this.name = name;
         this.userImagePath = userImagePath;
         this.lessonList = lessonList;
-        this.absence = absence;
+        this.absenceList = absenceList;
+        setAbsenceSum();
     }
 
-    public double getAbsence() {
-        return absence;
+    public ArrayList<Integer> getAbsenceList() {
+        return absenceList;
+    }
+
+    private void setAbsenceSum(){
+        for(Integer i : getAbsenceList()){
+            absenceSum += i;
+        }
+    }
+
+    public Integer getAbsenceSum() {
+        return absenceSum;
     }
 
     public String getUserImagePath() {
@@ -36,4 +48,5 @@ public class Student {
     public String getName() {
         return name;
     }
+
 }
