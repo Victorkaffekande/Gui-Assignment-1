@@ -16,4 +16,8 @@ public class Teacher {
     public String toString() {
         return getName();
     }
+
+    public String getUserImagePath() {
+        return userImagePath;
+    }
 }

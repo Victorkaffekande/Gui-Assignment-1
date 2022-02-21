@@ -15,8 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StudentDAO {
-    private final LocalDateTime today = LocalDateTime.of(2022, Month.FEBRUARY, 21, 10, 20); //"i dag" En falsk dato
-    private final LocalDateTime todayMorning = LocalDateTime.of(2022, Month.FEBRUARY, 21, 8, 14);
+    TimeHelper timeHelper = new TimeHelper();
+    LocalDateTime today = timeHelper.getToday();
+    LocalDateTime todayMorning = timeHelper.getTodayMorning();
 
     private TeacherDAO teacherDAO;
     Teacher teacher1 = null;
@@ -43,10 +44,7 @@ public class StudentDAO {
 
     }
 
-    public String getToday() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        return today.format(formatter);
-    }
+
 
     public Map<String, Integer> getStudentAttendance(Student student) {
         int scoNotAttended = 0;
@@ -82,9 +80,9 @@ public class StudentDAO {
     public ArrayList<Student> getAllStudents() {
         ArrayList<Student> allStudents = new ArrayList<>();
         allStudents.add(new Student("Flemming Testmen", "images/flemming.jpeg", get1stYear(),23.5));
-        allStudents.add(new Student("Hans", "images/flemming.jpeg", get1stYear(),12));
-        allStudents.add(new Student("Flemming Testmen", "images/flemming.jpeg", get1stYear(),4.6));
-
+        allStudents.add(new Student("Hans Hammer", "images/flemming.jpeg", get1stYear(),12));
+        allStudents.add(new Student("Trine Tris", "images/flemming.jpeg", get1stYear(),4.6));
+        allStudents.add(new Student("Karsten Klam", "images/flemming.jpeg", get1stYear(),4.6));
         return allStudents;
     }
 

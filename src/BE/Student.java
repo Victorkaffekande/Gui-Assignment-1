@@ -16,6 +16,9 @@ public class Student {
         this.absence = absence;
     }
 
+    public double getAbsence() {
+        return absence;
+    }
 
     public String getUserImagePath() {
         return userImagePath;

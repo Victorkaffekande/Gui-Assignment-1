@@ -23,7 +23,5 @@ public class StudentManager {
     public ObservableList<Lesson> getTodaysLessons(Student student){
         return studentDAO.getTodaysLessons(student);
     }
-    public String getToday(){
-        return studentDAO.getToday();
-    }
+
 }

@@ -2,6 +2,7 @@ package GUI.Controller;
 
 import BE.Lesson;
 import BE.Student;
+import DAL.TimeHelper;
 import GUI.Model.StudentModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,10 +41,12 @@ public class StudentViewController implements Initializable {
     public ImageView imageView;
     public Label nameLabel;
     public Label klLabel;
+    private TimeHelper timeHelper;
 
     public StudentViewController() {
         studentModel = new StudentModel();
         student = studentModel.getAllStudents().get(0);
+        timeHelper = new TimeHelper();
     }
 
     @Override
@@ -103,7 +106,7 @@ public class StudentViewController implements Initializable {
     private void setTopPaneInfo() {
         nameLabel.setText(student.getName());
         imageView.setImage(new Image(student.getUserImagePath()));
-        klLabel.setText("Kl: " + studentModel.getToday());
+        klLabel.setText("Kl: " + timeHelper.getTodayTime());
 
     }
 

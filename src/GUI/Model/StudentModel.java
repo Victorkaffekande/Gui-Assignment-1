@@ -27,7 +27,5 @@ public class StudentModel {
         return studentManager.getTodaysLessons(student);
     }
 
-    public String getToday(){
-        return studentManager.getToday();
-    }
+
 }
