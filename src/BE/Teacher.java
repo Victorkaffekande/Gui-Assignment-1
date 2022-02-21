@@ -2,8 +2,10 @@ package BE;
 
 public class Teacher {
     private String name;
-    public Teacher(String name){
+    private String userImagePath;
+    public Teacher(String name, String userImagePath){
         this.name = name;
+        this.userImagePath = userImagePath;
     }
 
     public String getName() {
