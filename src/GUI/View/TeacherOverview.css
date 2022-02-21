@@ -1,0 +1,54 @@
+.button{
+    -fx-content-display: center;
+    -fx-padding: 15px,15px;
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+    -fx-cursor: pointer;
+    -fx-background-color: #00bcd4;
+    -fx-border-style: none;
+    -fx-background-radius: 15px;
+    -fx-effect: dropshadow(three-pass-box, #999, 0, 0, 0, 9);
+}
+.button:hover{
+    -fx-background-color: #0096a8;
+}
+
+.button:pressed{
+    -fx-background-color: #0096a8;
+    -fx-effect: dropshadow(three-pass-box, #666, 0, 1.0, 0, 5);
+    -fx-translate-y: 4;
+}
+
+.label{
+    -fx-border-color: #413c53;
+    -fx-text-fill: #F3F7F6;
+}
+#sco2020Fravaerlist{
+-fx-font-size: 18;
+    -fx-text-fill: red;
+}
+
+#sde2020Fravaerlist{
+    -fx-font-size: 18;
+    -fx-text-fill: red;
+}
+
+#sde2021Fravaerlist{
+    -fx-font-size: 18;
+    -fx-text-fill: red;
+}
+#sco2020Student{
+    -fx-font-size: 18;
+
+}
+#sde2021Student{
+    -fx-font-size: 18;
+}
+#sde2020Student{
+    -fx-font-size: 18;
+}
+
+
+BorderPane{
+-fx-background-color: #25215e;
+}
