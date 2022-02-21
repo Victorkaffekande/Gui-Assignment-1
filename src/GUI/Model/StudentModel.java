@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Map;
 
 public class StudentModel {
@@ -27,6 +28,7 @@ public class StudentModel {
     public ObservableList<Student> getAllObservableStudents(){
         ObservableList<Student> observableList = FXCollections.observableArrayList();
         observableList.addAll(studentManager.getAllstudents());
+        observableList.sort(Comparator.comparing(Student::getAbsenceSum).reversed());
         return  observableList;
     }
 

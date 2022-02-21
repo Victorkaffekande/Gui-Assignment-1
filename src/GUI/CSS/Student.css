@@ -87,5 +87,5 @@
 .container{
     -fx-background-radius: 30;
     -fx-background-color: -fx-secondary-color;
-    -fx-effect: dropshadow(gaussian, black, 5, 0, 0, 0);
+
 }

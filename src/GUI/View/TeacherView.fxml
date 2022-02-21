@@ -55,7 +55,7 @@
    <center>
       <VBox fx:id="pieVBox" alignment="TOP_CENTER" prefHeight="382.0" prefWidth="299.0" spacing="20.0" styleClass="container" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="pieLabel" text="[Elev] har xx.x% fravær" />
+            <Label fx:id="studentAbsenceLabel" text="[Elev] har xx.x% fravær" />
             <BarChart fx:id="barChart">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />

@@ -1,5 +1,8 @@
 package BE;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Student {
@@ -9,8 +12,9 @@ public class Student {
     private ArrayList<Lesson> lessonList;
     private String name;
     private ArrayList<Integer> absenceList;
-    private Integer absenceSum=0;
-    public Student(String name,String userImagePath, ArrayList<Lesson> lessonList, ArrayList<Integer> absenceList){
+    private double absenceSum = 0;
+
+    public Student(String name, String userImagePath, ArrayList<Lesson> lessonList, ArrayList<Integer> absenceList) {
         this.name = name;
         this.userImagePath = userImagePath;
         this.lessonList = lessonList;
@@ -22,13 +26,17 @@ public class Student {
         return absenceList;
     }
 
-    private void setAbsenceSum(){
-        for(Integer i : getAbsenceList()){
-            absenceSum += i;
+    private void setAbsenceSum() {
+        double sum = 0;
+        for (Integer i : getAbsenceList()) {
+            sum += i;
         }
+        BigDecimal bd = BigDecimal.valueOf(absenceList.size() / sum * 100);
+        bd = bd.setScale(1, RoundingMode.HALF_UP);
+        absenceSum = bd.doubleValue();
     }
 
-    public Integer getAbsenceSum() {
+    public Double getAbsenceSum() {
         return absenceSum;
     }
 

@@ -5,8 +5,12 @@ import BE.Teacher;
 import DAL.TimeHelper;
 import GUI.Model.StudentModel;
 import GUI.Model.TeacherModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -27,11 +31,11 @@ public class TeacherViewController implements Initializable {
     public Label nameLabel;
     public Label klLabel;
     public TableView<Student> tableView;
-    public TableColumn<Student,String> TCnavn;
-    public TableColumn<String, Integer> TCFravær;
+    public TableColumn<Student, String> TCnavn;
+    public TableColumn<String, Number> TCFravær;
     public VBox pieVBox;
-    public Label pieLabel;
-    public BarChart barChart; //fix
+    public BarChart<String, Integer> barChart; //fix
+    public Label studentAbsenceLabel;
     TimeHelper timeHelper = new TimeHelper();
     LocalDateTime today = timeHelper.getToday();
     StudentModel studentModel = new StudentModel();
@@ -47,6 +51,24 @@ public class TeacherViewController implements Initializable {
     }
 
     public void handleTableViewClicked(MouseEvent mouseEvent) {
+        Student student = tableView.getSelectionModel().getSelectedItem();
+        showWeeklyAbsence(student);
+        setStudentAbsenceLabel(student);
+    }
+
+    private void showWeeklyAbsence(Student student) {
+        XYChart.Series barData = new XYChart.Series();
+
+        barData.getData().add(new XYChart.Data<>("Mandag", student.getAbsenceList().get(0)));
+        barData.getData().add(new XYChart.Data<>("Tirsdag", student.getAbsenceList().get(1)));
+        barData.getData().add(new XYChart.Data<>("Onsdag", student.getAbsenceList().get(2)));
+        barData.getData().add(new XYChart.Data<>("Torsdag", student.getAbsenceList().get(3)));
+        barData.getData().add(new XYChart.Data<>("Fredag", student.getAbsenceList().get(4)));
+
+        barChart.setLegendVisible(false);
+        barChart.setAnimated(false);
+        barChart.getData().clear();
+        barChart.getData().add(barData);
     }
 
     private void setTopPaneInfo() {
@@ -55,8 +77,12 @@ public class TeacherViewController implements Initializable {
         klLabel.setText("Kl: " + timeHelper.getTodayTime());
     }
 
-    private void populateTableView(){
+    private void populateTableView() {
         tableView.getItems().setAll(studentModel.getAllObservableStudents());
     }
 
+    private void setStudentAbsenceLabel(Student student) {
+        studentAbsenceLabel.setText(student.getName() + " har " + student.getAbsenceSum() + "%" + "fravær");
+
+    }
 }
