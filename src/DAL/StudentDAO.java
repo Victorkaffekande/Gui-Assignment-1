@@ -79,10 +79,10 @@ public class StudentDAO {
 
     public ArrayList<Student> getAllStudents() {
         ArrayList<Student> allStudents = new ArrayList<>();
-        allStudents.add(new Student("Flemming Testmen", "images/flemming.jpeg", get1stYear(),23.5));
-        allStudents.add(new Student("Hans Hammer", "images/flemming.jpeg", get1stYear(),12));
-        allStudents.add(new Student("Trine Tris", "images/flemming.jpeg", get1stYear(),4.6));
-        allStudents.add(new Student("Karsten Klam", "images/flemming.jpeg", get1stYear(),4.6));
+        allStudents.add(new Student("Flemming Testmen", "images/flemming.jpeg", get1stYear()));
+        allStudents.add(new Student("Hans Hammer", "images/flemming.jpeg", get1stYear()));
+        allStudents.add(new Student("Trine Tris", "images/flemming.jpeg", get1stYear()));
+        allStudents.add(new Student("Karsten Klam", "images/flemming.jpeg", get1stYear()));
         return allStudents;
     }
 
