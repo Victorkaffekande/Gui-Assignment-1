@@ -25,7 +25,7 @@ public class LoginController implements Initializable {
         String sPassword = "flemming";
         //karsten@easv.dk
         if (usernameInput.getText().trim().equals(sUsername) && passwordInput.getText().trim().equals(sPassword)){
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI/View/StudentView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI/View/StudentViewVarm.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));

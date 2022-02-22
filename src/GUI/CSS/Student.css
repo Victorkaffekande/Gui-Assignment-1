@@ -64,7 +64,7 @@
 
 .table-view{
     -fx-background-color: #89CFF0;
-    -fx-background-radius: 30;
+    -fx-background-radius: 0.5;
 }
 
 .table-view .column-header-background{
