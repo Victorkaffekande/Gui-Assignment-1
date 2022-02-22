@@ -77,6 +77,10 @@ public class StudentDAO {
         return map;
     }
 
+    public Student getFlemming(){
+        return new Student("Flemming Dahl", "images/flemming.jpeg", get1stYear(), setStudentAbsence());
+    }
+
     public ArrayList<Student> getAllStudents() {
         ArrayList<Student> allStudents = new ArrayList<>();
         allStudents.add(new Student("Marius Dahl", "images/flemming.jpeg", get1stYear(), setStudentAbsence()));

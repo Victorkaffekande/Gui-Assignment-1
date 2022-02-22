@@ -14,6 +14,9 @@ public class StudentManager {
     public StudentManager(){
         studentDAO = new StudentDAO();
     }
+    public Student getFlemming(){
+        return studentDAO.getFlemming();
+    }
     public Map<String,Integer> getStudentAttendance(Student student){
         return studentDAO.getStudentAttendance(student);
     }

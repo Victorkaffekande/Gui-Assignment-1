@@ -30,7 +30,6 @@ public class TeacherViewController implements Initializable {
     public TableView<Student> tableView;
     public TableColumn<Student, String> TCnavn;
     public TableColumn<String, Number> TCFravær;
-    public Label studentAbsenceLabel;
     public VBox barCharVbox;
     public Label classAttendanceLabel;
     TimeHelper timeHelper = new TimeHelper();

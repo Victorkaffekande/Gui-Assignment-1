@@ -6,15 +6,15 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-public class Main extends Application{
+public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GUI/View/Teacherview.fxml")));
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GUI/View/login.fxml")));
         Scene scene = new Scene(parent);
         primaryStage.setTitle("Login");
-
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

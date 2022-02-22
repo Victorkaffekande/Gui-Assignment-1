@@ -45,7 +45,7 @@ public class StudentViewController implements Initializable {
 
     public StudentViewController() {
         studentModel = new StudentModel();
-        student = studentModel.getAllStudents().get(0);
+        student = studentModel.getFlemming();
         timeHelper = new TimeHelper();
     }
 

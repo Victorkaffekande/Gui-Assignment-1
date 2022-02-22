@@ -23,20 +23,29 @@ public class LoginController implements Initializable {
     public void handleLoginButton(ActionEvent actionEvent) throws IOException {
         String sUsername = "flemming@easv.dk";
         String sPassword = "flemming";
+        String tUsername = "kirstine@easv.dk";
+        String tPassword = "kirstine";
         //karsten@easv.dk
         if (usernameInput.getText().trim().equals(sUsername) && passwordInput.getText().trim().equals(sPassword)){
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI/View/StudentView.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("StudentView");
-            stage.centerOnScreen();
-            stage.show();
-
+            openNewScene("/GUI/View/StudentView.fxml","Elev",actionEvent);
+        }
+        else if (usernameInput.getText().trim().equals(tUsername) && passwordInput.getText().trim().equals(tPassword)){
+            openNewScene("/GUI/View/TeacherView.fxml","Lære",actionEvent);
         }
         else {
             error();
         }
+    }
+
+    private void openNewScene(String fxmlPath,String Title ,ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle(Title);
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.show();
     }
 
     private void error(){

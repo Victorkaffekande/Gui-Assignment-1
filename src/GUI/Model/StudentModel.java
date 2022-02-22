@@ -36,5 +36,8 @@ public class StudentModel {
         return studentManager.getTodaysLessons(student);
     }
 
+    public Student getFlemming(){
+        return studentManager.getFlemming();
+    }
 
 }
