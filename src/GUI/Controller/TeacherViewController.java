@@ -5,12 +5,8 @@ import BE.Teacher;
 import DAL.TimeHelper;
 import GUI.Model.StudentModel;
 import GUI.Model.TeacherModel;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -20,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+
 
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -33,9 +30,9 @@ public class TeacherViewController implements Initializable {
     public TableView<Student> tableView;
     public TableColumn<Student, String> TCnavn;
     public TableColumn<String, Number> TCFravær;
-    public VBox pieVBox;
-    public BarChart<String, Integer> barChart; //fix
     public Label studentAbsenceLabel;
+    public VBox barCharVbox;
+    public Label classAttendanceLabel;
     TimeHelper timeHelper = new TimeHelper();
     LocalDateTime today = timeHelper.getToday();
     StudentModel studentModel = new StudentModel();
@@ -48,15 +45,18 @@ public class TeacherViewController implements Initializable {
         TCFravær.setCellValueFactory(new PropertyValueFactory<>("absenceSum"));
         setTopPaneInfo();
         populateTableView();
+        setClassAttendanceLabel();
     }
 
     public void handleTableViewClicked(MouseEvent mouseEvent) {
         Student student = tableView.getSelectionModel().getSelectedItem();
-        showWeeklyAbsence(student);
-        setStudentAbsenceLabel(student);
+        if (student != null) {
+            assembleBarChartVbox(student);
+        }
+
     }
 
-    private void showWeeklyAbsence(Student student) {
+    private BarChart makeBarchart(Student student) {
         XYChart.Series barData = new XYChart.Series();
 
         barData.getData().add(new XYChart.Data<>("Mandag", student.getAbsenceList().get(0)));
@@ -65,10 +65,25 @@ public class TeacherViewController implements Initializable {
         barData.getData().add(new XYChart.Data<>("Torsdag", student.getAbsenceList().get(3)));
         barData.getData().add(new XYChart.Data<>("Fredag", student.getAbsenceList().get(4)));
 
+        NumberAxis yAxis = new NumberAxis();
+        yAxis.setLabel("Fraværs %");
+        yAxis.setUpperBound(student.getAbsenceSum());
+        yAxis.setAutoRanging(false);
+        yAxis.setTickUnit(1);
+
+        CategoryAxis xAxis = new CategoryAxis();
+
+        BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
         barChart.setLegendVisible(false);
         barChart.setAnimated(false);
-        barChart.getData().clear();
         barChart.getData().add(barData);
+        return barChart;
+    }
+
+    private void assembleBarChartVbox(Student student) {
+        barCharVbox.getChildren().clear();
+        barCharVbox.getChildren().add(createStudentAbsenceLabel(student));
+        barCharVbox.getChildren().add(makeBarchart(student));
     }
 
     private void setTopPaneInfo() {
@@ -77,12 +92,22 @@ public class TeacherViewController implements Initializable {
         klLabel.setText("Kl: " + timeHelper.getTodayTime());
     }
 
+    private Label createStudentAbsenceLabel(Student student) {
+        String s = student.getName() + " har " + student.getAbsenceSum() + "%" + "fravær";
+        return new Label(s);
+    }
+
     private void populateTableView() {
         tableView.getItems().setAll(studentModel.getAllObservableStudents());
     }
 
-    private void setStudentAbsenceLabel(Student student) {
-        studentAbsenceLabel.setText(student.getName() + " har " + student.getAbsenceSum() + "%" + "fravær");
+    private void setClassAttendanceLabel() {
+        double p = 0;
+        for (Student s : tableView.getItems()) {
+            p += s.getAbsenceSum();
+        }
 
+        classAttendanceLabel.setText("CSe A.21 | " + Double.toString(p).substring(0, 4) + "%");
     }
+
 }

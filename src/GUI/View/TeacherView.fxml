@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -31,7 +28,7 @@
          <children>
             <VBox alignment="TOP_CENTER" spacing="5.0">
                <children>
-                  <Label text="CSe A.21 | xx.x%" />
+                  <Label fx:id="classAttendanceLabel" text="CSe A.21 | xx.x%" />
                   <TableView fx:id="tableView" fixedCellSize="0.0" onMouseClicked="#handleTableViewClicked" prefWidth="300.0" scaleShape="false">
                     <columns>
                       <TableColumn fx:id="TCnavn" minWidth="-1.0" prefWidth="-1.0" text="Navn" />
@@ -53,21 +50,17 @@
       </HBox>
    </left>
    <center>
-      <VBox fx:id="pieVBox" alignment="TOP_CENTER" prefHeight="382.0" prefWidth="299.0" spacing="20.0" styleClass="container" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="studentAbsenceLabel" text="[Elev] har xx.x% fravær" />
-            <BarChart fx:id="barChart">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </BarChart>
-         </children>
+      <VBox fx:id="barCharVbox" alignment="TOP_CENTER" prefHeight="382.0" prefWidth="299.0" spacing="20.0" styleClass="container" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin>
+         <children>
+            <Label text="Vælg en elev">
+               <VBox.margin>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="150.0" />
+               </VBox.margin>
+            </Label>
+         </children>
       </VBox>
    </center>
 </BorderPane>

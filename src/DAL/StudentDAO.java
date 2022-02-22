@@ -46,7 +46,6 @@ public class StudentDAO {
     }
 
 
-
     public Map<String, Integer> getStudentAttendance(Student student) {
         int scoNotAttended = 0;
         int sdeNotAttended = 0;
@@ -80,24 +79,30 @@ public class StudentDAO {
 
     public ArrayList<Student> getAllStudents() {
         ArrayList<Student> allStudents = new ArrayList<>();
-        allStudents.add(new Student("Flemming Testmen", "images/flemming.jpeg", get1stYear(),setStudentAbsence()));
-        allStudents.add(new Student("Hans Hammer", "images/flemming.jpeg", get1stYear(),setStudentAbsence()));
-        allStudents.add(new Student("Trine Tris", "images/flemming.jpeg", get1stYear(),setStudentAbsence()));
-        allStudents.add(new Student("Karsten Klam", "images/flemming.jpeg", get1stYear(),setStudentAbsence()));
+        allStudents.add(new Student("Marius Dahl", "images/flemming.jpeg", get1stYear(), setStudentAbsence()));
+        allStudents.add(new Student("Hans Zimmer", "images/soren.jpeg", get1stYear(), setStudentAbsence()));
+        allStudents.add(new Student("Trine Tris", "images/flemming.jpeg", get1stYear(), setStudentAbsence()));
+        allStudents.add(new Student("Karsten Klam", "images/flemming.jpeg", get1stYear(), setStudentAbsence()));
         return allStudents;
     }
 
 
-
-    private ArrayList<Integer> setStudentAbsence() {
-        ArrayList<Integer> week = new ArrayList<>();
+    private ArrayList<Double> setStudentAbsence() {
+        ArrayList<Double> week = new ArrayList<>();
         Random random = new Random();
-            week.add(random.nextInt(4));
-            week.add(random.nextInt(8));
-            week.add(random.nextInt(7));
-            week.add(random.nextInt(4));
-            week.add(random.nextInt(4));
-    return  week;
+        double monday=random.nextInt(4);
+        double tuesday =random.nextInt(8);
+        double wednesday =random.nextInt(7);
+        double thursday=random.nextInt(4);
+        double friday=random.nextInt(4);
+        double sum = monday + tuesday + wednesday+thursday+friday +100; //+60 for a give en mængder timer uden fravær
+
+        week.add(monday / sum * 100);
+        week.add(tuesday / sum * 100);
+        week.add(wednesday / sum * 100);
+        week.add(thursday / sum * 100);
+        week.add(friday / sum * 100);
+        return week;
     }
 
 

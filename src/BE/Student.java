@@ -11,10 +11,10 @@ public class Student {
     private String userImagePath;
     private ArrayList<Lesson> lessonList;
     private String name;
-    private ArrayList<Integer> absenceList;
+    private ArrayList<Double> absenceList;
     private double absenceSum = 0;
 
-    public Student(String name, String userImagePath, ArrayList<Lesson> lessonList, ArrayList<Integer> absenceList) {
+    public Student(String name, String userImagePath, ArrayList<Lesson> lessonList, ArrayList<Double> absenceList) {
         this.name = name;
         this.userImagePath = userImagePath;
         this.lessonList = lessonList;
@@ -22,18 +22,20 @@ public class Student {
         setAbsenceSum();
     }
 
-    public ArrayList<Integer> getAbsenceList() {
+    public ArrayList<Double> getAbsenceList() {
         return absenceList;
     }
 
     private void setAbsenceSum() {
         double sum = 0;
-        for (Integer i : getAbsenceList()) {
-            sum += i;
+        for (Double d : getAbsenceList()) {
+            sum += d;
         }
-        BigDecimal bd = BigDecimal.valueOf(absenceList.size() / sum * 100);
-        bd = bd.setScale(1, RoundingMode.HALF_UP);
-        absenceSum = bd.doubleValue();
+
+        long factor = (long) Math.pow(10, 2);
+        sum = sum * factor;
+        long tmp = Math.round(sum);
+        absenceSum = (double) tmp / factor;
     }
 
     public Double getAbsenceSum() {
