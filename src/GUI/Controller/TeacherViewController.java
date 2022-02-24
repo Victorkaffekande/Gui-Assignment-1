@@ -92,7 +92,7 @@ public class TeacherViewController implements Initializable {
     }
 
     private Label createStudentAbsenceLabel(Student student) {
-        String s = student.getName() + " har " + student.getAbsenceSum() + "%" + "fravær";
+        String s = student.getName() + " har " + student.getAbsenceSum() + "% " + "fravær";
         return new Label(s);
     }
 

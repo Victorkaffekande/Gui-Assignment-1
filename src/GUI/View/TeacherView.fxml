@@ -12,11 +12,11 @@
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="865.0" styleClass="borderPane" stylesheets="@../CSS/Student.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TeacherViewController">
    <top>
-      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="98.0" prefWidth="745.0" styleClass="topPane">
+      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="745.0" styleClass="topPane">
          <children>
-            <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="8.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0">
+            <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0">
                <children>
-                  <ImageView fx:id="imageView" fitHeight="80.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageView" fitHeight="101.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="nameLabel" text="{navn}" />
                   <Label fx:id="klLabel" text="{KL}" />
                </children>
