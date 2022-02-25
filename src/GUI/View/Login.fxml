@@ -18,7 +18,7 @@
                <children>
                   <ImageView fitHeight="79.0" fitWidth="343.0">
                      <image>
-                        <Image url="@../../images/EASV%20RGB%20invert.png" />
+                        <Image url="images/EASVRGBinvert.png" />
                      </image>
                   </ImageView>
                   <TextField fx:id="usernameInput" promptText="Username" />
