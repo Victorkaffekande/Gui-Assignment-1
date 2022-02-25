@@ -1,42 +1,11 @@
-.button{
-    -fx-background-color: #00bcd4;
-    -fx-text-fill: white;
+.pane{
+    -fx-background-color: fcbb2d;
 }
-
-.button:hover{
-    -fx-background-color: #0096a8;
-}
-
-.button:pressed{
-    -fx-background-color: #009fe3;
-}
-
-.button:focused {
-    -fx-background-color: #009fe3;
-    -fx-border-color: #CDD1D6;
-}
-
-.check-box{
-    -fx-highlight-fill: #0096a8;
-    -fx-text-fill: white;
-    -fx-cursor: hand;
-}
-.check-box:showing{
-    -fx-border-color: black;
-}
-
-.label
-{
-    -fx-text-fill: white;
-}
-
-.borderpane {
-    -fx-background-color: black;
+#topPane{
+    -fx-background-color: #ffff;
     -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0);
 }
-
-#Anchor {
-    -fx-background-color: black;
-    -fx-opacity: 0.15;
-    -fx-border-color: whitesmoke;
+.button{
+    -fx-background-color: #009fe3;
+    -fx-text-fill: white;
 }
